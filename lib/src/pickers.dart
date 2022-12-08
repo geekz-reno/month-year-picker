@@ -351,7 +351,7 @@ class _Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final buttonBackground = isSelected ? colorScheme.secondary : null;
+    final buttonBackground = isSelected ? Color(0xFFEE7D30) : null;
     final buttonText = isSelected
         ? colorScheme.onSecondary
         : isHighlighted
