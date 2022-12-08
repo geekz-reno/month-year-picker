@@ -125,10 +125,9 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
   // -------------------------------- PROPERTIES -------------------------------
   Size get _dialogSize {
     final orientation = MediaQuery.of(context).orientation;
-    final offset =
-        Theme.of(context).materialTapTargetSize == MaterialTapTargetSize.padded
-            ? const Offset(0.0, 24.0)
-            : Offset.zero;
+    final offset = Theme.of(context).materialTapTargetSize == MaterialTapTargetSize.padded
+        ? const Offset(0.0, 24.0)
+        : Offset.zero;
     switch (orientation) {
       case Orientation.portrait:
         return _portraitDialogSize + offset;
@@ -141,8 +140,7 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
   @override
   void initState() {
     super.initState();
-    _isShowingYear =
-        widget.initialMonthYearPickerMode == MonthYearPickerMode.year;
+    _isShowingYear = widget.initialMonthYearPickerMode == MonthYearPickerMode.year;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(_updatePaginators);
     });
@@ -283,8 +281,7 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
                   onPageChanged: _updateSelectedDate,
                   onYearSelected: _updateYear,
                   selectedDate: _selectedDate,
-                  selectableMonthYearPredicate:
-                      widget.selectableMonthYearPredicate,
+                  selectableMonthYearPredicate: widget.selectableMonthYearPredicate,
                 ),
               ),
             ),
@@ -292,7 +289,7 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
               duration: _dialogSizeAnimationDuration,
               curve: Curves.easeOut,
               left: 0.0,
-              right: (pickerMaxWidth - (width ?? pickerMaxWidth)),
+              right: 0.0,
               top: _isShowingYear ? constraints.maxHeight : 0.0,
               bottom: _isShowingYear ? -constraints.maxHeight : 0.0,
               child: SizedBox(
@@ -305,8 +302,7 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
                   onPageChanged: _updateSelectedDate,
                   onMonthSelected: _updateMonth,
                   selectedDate: _selectedDate,
-                  selectableMonthYearPredicate:
-                      widget.selectableMonthYearPredicate,
+                  selectableMonthYearPredicate: widget.selectableMonthYearPredicate,
                 ),
               ),
             )
@@ -451,10 +447,8 @@ class _Header extends StatelessWidget {
     // The header should use the primary color in light themes and surface color
     // in dark.
     final isDark = colorScheme.brightness == Brightness.dark;
-    final primarySurfaceColor =
-        isDark ? colorScheme.surface : colorScheme.primary;
-    final onPrimarySurfaceColor =
-        isDark ? colorScheme.onSurface : colorScheme.onPrimary;
+    final primarySurfaceColor = isDark ? colorScheme.surface : colorScheme.primary;
+    final onPrimarySurfaceColor = isDark ? colorScheme.onSurface : colorScheme.onPrimary;
 
     final helpStyle = textTheme.overline?.copyWith(
       color: onPrimarySurfaceColor,
